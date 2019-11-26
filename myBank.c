@@ -1,17 +1,19 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "myBank.h"
-#define acounts 50
 
-
-double bankAcounts[acounts][2];
+double bankAcounts[acounts][2] = {0};
 
 void Open()
 {
-double num;
+double num =0;
 bool flag = false;
 printf("\nEnter initial deposit : ");
-scanf("\n%lf",&num);
+if(scanf("\n%lf",&num) == 1){
+if(num < 0){
+printf("the deposit can't be negative");
+}
+else{
 num = (int)(num*100);
 num = num/100;
  for(int i = 0; i < 50 ; i++){
@@ -24,14 +26,17 @@ num = num/100;
 }
 }
 }
-if(flag== false) printf("\nThere is no acount available");
 }
+}
+if(flag== false) printf("\nOpen -fail");
+}
+
 
 void checkBalance()
 {
-int num;
+int num = 0;
 printf("\nEnter account number : ");
- scanf("\n%d",&num);
+if(scanf("\n%d",&num) ==1){
 num = num-901;
 if(num <0 || num >50){
 printf("\n The given acount does not exists");
@@ -45,11 +50,20 @@ printf("\nThe balance of the acount %d is: %0.2lf", (num+901), bankAcounts[num][
 }
 }
 }
+else{
+printf("\nWrong input");
+}
+}
+
 void addDeposit()
 {
-int num;
+int num = 0;
 printf("\nEnter account number : ");
- scanf("\n%d",&num);
+if(scanf("\n%d",&num) ==1){
+if(num < 0){
+printf("the deposit can't be negative");
+}
+else{
 num = num-901;
 if((num <0 || num >50)){
 printf("\n The given acount does not exists");
@@ -59,7 +73,7 @@ if(bankAcounts[num][0]==0){
 printf("\n The given acount does not exists");
 }
 else{
-double sum;
+double sum = 0;
  printf("\nEnter new deposit : ");
  scanf("\n%lf",&sum);
 sum = (int)(sum*100);
@@ -69,12 +83,21 @@ printf("\n The new balance of the account %d is : %0.2lf",(num+901), bankAcounts
 }
 }
 }
+}
+else{
+printf("\nWrong input");
+}
+}
 
 void withDrawal()
 {
-int num;
+int num = 0;
 printf("\nEnter account number : ");
- scanf("\n%d",&num);
+if(scanf("\n%d",&num) ==1){
+if(num < 0){
+printf("the deposit can't be negative");
+}
+else{
 num = num-901;
 if((num <0 || num >50)){
 printf("\n The given acount does not exists");
@@ -84,7 +107,7 @@ if(bankAcounts[num][0]==0){
 printf("\n The given acount does not exists");
 }
 else{
-double sum;
+double sum= 0;
  printf("\nEnter amount to withdraw : ");
  scanf("\n%lf",&sum);
 sum = (int)(sum*100);
@@ -97,12 +120,17 @@ printf("\nThe new balance of the account %d is : %0.2lf",(num+901), bankAcounts[
 }
 }
 }
+}
+else{
+printf("\nWrong input");
+}
+}
 
 void close()
 {
-int num;
+int num = 0;
 printf("\nEnter account number : ");
- scanf("\n%d",&num);
+if(scanf("\n%d",&num) == 1){
 num = num-901;
 if((num <0 || num >50)){
 printf("\nThe given acount does not exists");
@@ -118,12 +146,20 @@ printf("\nYour account has been closed");
 }
 }
 }
+else{
+printf("\nThe given acount does not exists");
+}
+}
 
 void rate()
 {
-double ra;
+double ra = 0;
 printf("\nEnter your rate : ");
-scanf("\n%lf",&ra);
+if(scanf("\n%lf",&ra) ==1){
+if(ra < 0){
+printf("the deposit can't be negative");
+}
+else{
 for(int i = 0; i <50; i++){
 //for open account
 if(bankAcounts[i][0] ==1)
@@ -131,6 +167,11 @@ if(bankAcounts[i][0] ==1)
 int new_ra= ra+100;
 bankAcounts[i][1] = ((bankAcounts[i][1] *new_ra)/100);
 }
+}
+}
+}
+else{
+printf("\nWrong input");
 }
 }
 

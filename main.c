@@ -3,7 +3,6 @@
 
 int main(){
 char menu;
-int count=0;
 do
 {
 printf("\nEnter requested operation: ");
@@ -13,12 +12,9 @@ printf("\nfor add deposit to your account press 'D'");
 printf("\nto withdraw money from your account press 'W'");
 printf("\nto close an account press 'C'");
 printf("\nfor printing all open accounts press 'P'");
+printf("\nto add rate to all accounts 'I'");
 printf("\nto close the program and all accounts press 'E'\n");  
 scanf("\n%c", &menu); 
-while(getchar()!= '\n'){
-count++;
-}
-if(count>0) menu ='x';
 switch(menu)
 {
 case 'O':
@@ -39,11 +35,15 @@ break;
 case 'P':
 printAcounts();
 break;
+case 'I':
+rate();
+break;
 case 'E':
 closeAll();
 break;
 default:
-printf("wrong input , try again"); break;
+printf("wrong input , try again"); 
+break;
 }
 }while(menu != 'E');
 
