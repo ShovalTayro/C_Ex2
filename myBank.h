@@ -3,7 +3,7 @@
 #include <stdio.h>
 #define acounts 50
 
-double bankAcounts[acounts][2];
+extern double bankAcounts[acounts][2];
 
 void Open();
 
